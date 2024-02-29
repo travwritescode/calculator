@@ -11,6 +11,14 @@ numberButtons.forEach(button => {
     })
 })
 
+const decimalButton = document.querySelector(".decimal");
+decimalButton.addEventListener('click', () => {
+    if (!checkForDecimal(displayValue)) {
+        displayValue += decimalButton.textContent;
+        display(displayValue);
+    }
+})
+
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -37,11 +45,21 @@ clearButton.addEventListener('click', () => {
 
 const signButton = document.querySelector(".negate");
 signButton.addEventListener('click', () => {
-    displayValue = "-" + displayValue;
-    display(displayValue);
+    if (displayValue.charAt(0) === "-") {
+        displayValue = displayValue.slice(1);
+        display(displayValue);
+    } else {
+        displayValue = "-" + displayValue;
+        display(displayValue);
+    }
 })
 
 // Helper Functions
+function checkForDecimal(value) {
+    const arrayedValue = value.split("");
+    return arrayedValue.includes(".");
+}
+
 function display(val) {
     document.querySelector('.display > p').textContent = val;
 }
