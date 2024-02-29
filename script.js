@@ -58,6 +58,14 @@ signButton.addEventListener('click', () => {
     }
 })
 
+const backspaceButton = document.querySelector(".backspace");
+backspaceButton.addEventListener('click', () => {
+    if (displayValue.length > 0) {
+        displayValue = displayValue.slice(0, -1);
+        display(displayValue);
+    }
+})
+
 // Helper Functions
 function checkForDecimal(value) {
     const arrayedValue = value.split("");
@@ -76,13 +84,15 @@ function evaluate() {
     else if (num1 && num2 && op) {
         displayValue = operate(op, Number(num1), Number(num2));
     }
-    
+
     if (checkForDecimal) {
         display(roundOutput(displayValue));
     }
     else {
         display(displayValue);
     }
+
+    num1 = "";
 
 }
 

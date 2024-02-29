@@ -36,13 +36,19 @@ body {
     flex-wrap: wrap;
 }
 
-.evaluate, .clear {
+.clear, .backspace {
+    flex-basis: 100px;
+    background-color: #344e41;
+    color: #dad7cd;
+}
+
+.evaluate {
     flex-basis: 200px;
     background-color: #344e41;
     color: #dad7cd;
 }
 
-.evaluate:active, .clear:active {
+.evaluate:active, .clear:active, .backspace:active {
     background-color: #456857;
 }
 
