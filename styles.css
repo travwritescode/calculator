@@ -42,9 +42,15 @@ body {
     color: #dad7cd;
 }
 
+.evaluate:active, .clear:active {
+    background-color: #456857;
+}
+
 button {
     flex-basis: 100px;
     height: 100px;
+    font-size: 24px;
+    font-family: monospace;
     border: 1px solid #132a13;
 }
 
@@ -52,7 +58,15 @@ button {
     background-color: #588157;;
 }
 
+.negate:active, .operator:focus {
+    background-color: #6E9C6D;
+}
+
 .number, .decimal {
     background-color: #a3b18a;
+}
+
+.number:active, .decimal:active {
+    background-color: #BEC8AC;
 }
 
