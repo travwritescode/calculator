@@ -14,22 +14,29 @@ numberButtons.forEach(button => {
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
+        if (num1) {
+            evaluate()
+        }
         op = button.textContent;
         num1 = displayValue;
         displayValue = "";
-        display(displayValue)
     })
 })
 
 const equalButton = document.querySelector(".evaluate");
-equalButton.addEventListener('click', () => {
+equalButton.addEventListener('click', evaluate);
+
+
+
+// Helper Functions
+function display(val) {
+    document.querySelector('.display > p').textContent = val;
+}
+
+function evaluate() {
     num2 = displayValue;
     displayValue = operate(op, Number(num1), Number(num2));
     display(displayValue);
-})
-
-function display(val) {
-    document.querySelector('.display > p').textContent = val;
 }
 
 function operate(operator, number1, number2) {
@@ -59,6 +66,6 @@ function multiply(a, b) {
     return a * b;
 }
 
-function divide(a ,b) {
+function divide(a, b) {
     return a / b;
 }
