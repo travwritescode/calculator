@@ -5,8 +5,6 @@ body {
 
 .calculator {
     width: 200px;
-    display: flex;
-    flex-direction: column;
 }
 
 .display {
@@ -25,15 +23,20 @@ body {
 
 .buttons {
     display: flex;
-}
-
-.numPad {
-    display: flex;
     flex-wrap: wrap;
-    
 }
 
-button {
-    padding: 10px 12px;
-    margin: 5px;
+.evaluate, .clear {
+    flex-grow: 2;
 }
+
+.number, .operator {
+    flex-grow: 1;
+}
+/* 
+button {
+    width: 25%;
+} */
+
+
+
