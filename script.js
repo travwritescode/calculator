@@ -26,7 +26,20 @@ operatorButtons.forEach(button => {
 const equalButton = document.querySelector(".evaluate");
 equalButton.addEventListener('click', evaluate);
 
+const clearButton = document.querySelector(".clear");
+clearButton.addEventListener('click', () => {
+    displayValue = "";
+    num1 = "";
+    num2 = "";
+    op = "";
+    display(displayValue);
+})
 
+const signButton = document.querySelector(".negate");
+signButton.addEventListener('click', () => {
+    displayValue = "-" + displayValue;
+    display(displayValue);
+})
 
 // Helper Functions
 function display(val) {
@@ -35,8 +48,13 @@ function display(val) {
 
 function evaluate() {
     num2 = displayValue;
-    displayValue = operate(op, Number(num1), Number(num2));
-    display(displayValue);
+    if (op === "/" && num2 === "0") {
+        display("uhhh")
+    }
+    else if (num1 && num2 && op) {
+        displayValue = operate(op, Number(num1), Number(num2));
+        display(displayValue);
+    }
 }
 
 function operate(operator, number1, number2) {
