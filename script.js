@@ -1,3 +1,5 @@
+let MAX_DISPLAY_LENGTH = 8;
+
 let displayValue = "";
 let num1;
 let num2;
@@ -6,8 +8,10 @@ let op;
 const numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        displayValue += button.textContent;
-        display(displayValue);
+        if (displayValue.length < 8) {
+            displayValue += button.textContent;
+            display(displayValue);
+        }
     })
 })
 
@@ -71,8 +75,28 @@ function evaluate() {
     }
     else if (num1 && num2 && op) {
         displayValue = operate(op, Number(num1), Number(num2));
+    }
+    
+    if (checkForDecimal) {
+        display(roundOutput(displayValue));
+    }
+    else {
         display(displayValue);
     }
+
+}
+
+function roundOutput(val) {
+    let displayValueString = val.toString();
+    if (displayValueString.length > 8) {
+        let displayValueStringDecimalIndex = displayValueString.indexOf(".");
+        if (displayValueString.includes(".")) {
+            let roundTo = MAX_DISPLAY_LENGTH - (displayValueStringDecimalIndex + 1);
+            val = displayValue.toFixed(roundTo);
+        }
+    }
+
+    return val
 }
 
 function operate(operator, number1, number2) {
